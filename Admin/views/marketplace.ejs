@@ -1,0 +1,106 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/marketplace.css" />
+
+<br />
+<div style="display: flex; justify-content: center; align-items: center">
+  <h4>Choose a category to filter</h4>
+</div>
+
+<div class="filter">
+  <div class="pills">
+    <form action="/pillFilter" method="post">
+      <button
+        id="books"
+        type="submit"
+        name="submit"
+        value="books"
+        class="btn btn-primary btn-rounded cat"
+      >
+        Books
+      </button>
+      <button
+        id="stationary"
+        type="submit"
+        name="submit"
+        value="stationary"
+        class="btn btn-primary btn-rounded cat"
+      >
+        Stationary
+      </button>
+      <button
+        id="utility"
+        type="submit"
+        name="submit"
+        value="utility"
+        class="btn btn-primary btn-rounded cat"
+      >
+        Utility
+      </button>
+      <button
+        id="electronic"
+        type="submit"
+        name="submit"
+        value="electronic"
+        class="btn btn-primary btn-rounded cat"
+      >
+        Electronic
+      </button>
+    </form>
+  </div>
+</div>
+
+<section class="section-products">
+  <div class="container">
+    <div class="row">
+      <% items.forEach(function(item){ %>
+      <%if(item.author.status==="Accepted"){%>
+
+      <div class="col-md-6 col-lg-4 col-xl-3">
+        <div id="product-1" class="single-product">
+          <a href="/viewItem/<%= item._id %>">
+          <div class="part-1" style="background-color: teal;">
+            <!-- <div style="display:flex;align-item:center; justify-content: center;object-fit:fill;"> -->
+              
+            <%if(item.images.length){%>
+            <img
+              style="z-index: 1"
+              style="background: no-repeat center; background-size: fill;"
+              class="image-container"
+              src="<%= item.images[0].url %>"
+              alt="..."
+            />
+            <%}%>
+            <!-- </div> -->
+
+            <ul style="z-index: 3;">
+              
+              <li>
+                <form action="/viewItem/<%= item._id %>" method="get">
+                  <div
+                    role="button"
+                    type="submit"
+                    name="mysubmitbutton"
+                    id="mysubmitbutton"
+                    onclick="window.location.href = '/viewItem/<%= item._id %>';"
+                  >
+                    <div class="icon">
+                      <button class="noBorder">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </a>
+          <div class="part-2">
+            <h3 class="product-title"><%= item.title %></h3>
+            <h4 class="product-price">₹ <%= item.price %></h4>
+          </div>
+        </div>
+      </div>
+      <%}%> <%})%>
+    </div>
+  </div>
+</section>

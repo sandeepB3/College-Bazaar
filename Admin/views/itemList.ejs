@@ -1,0 +1,77 @@
+<% layout('layouts/boilerplate') %>
+  <br />
+  <link rel="stylesheet" href="./css/itemList.css" />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-white mb-5">
+          <div class="card-heading clearfix border-bottom mb-4">
+            <h4 class="card-title">Item List</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled">
+
+              <% found.reverse().forEach(function(item){ %>
+                <li class="position-relative booking flex-direction" >
+                  <div>
+                    <div class="media">
+                      <div class="msg-img">
+                        <img class="fit" src="<%= item.images[0].url %>" alt="..." />
+                      </div>
+                      <div class="media-body">
+                        <br />
+                        <h5 class="mb-4">
+                          Seller: <%= item.author.username %>
+                            <span class="badge bg-primary mx-3">
+                              <%= item.status %>
+                            </span>
+                        </h5>
+                        <div class="mb-3">
+                          <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Item:</span>
+                          <span class="bg-light-blue">
+                            <%= item.title %>
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Price:</span>
+                          <span class="bg-light-blue">
+                            <%= item.price %>
+                          </span>
+                        </div>
+                        <div class="mb-5">
+                          <span class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Description:</span>
+                          <span class="border-right pr-2 mr-2">
+                            <%= item.description %>
+                          </span>
+                        </div>
+                        <a href="/profile/<%= item.author._id %>" style="text-decoration: none" class="btn-gray">Seller
+                          Profile</a>
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div>
+                      <form action="/itemStatus/<%= item._id %>" method="post">
+                        <button name="status" value="Approved" type="submit" class="btn-success mr-2 btn">
+                          <i class="fa-solid fa-check"></i> Approve
+                        </button>
+                      </form>
+                      <br />
+                      <form action="/itemStatus/<%= item._id %>" method="post">
+                        <button name="status" value="Rejected" type="submit" class="btn-danger mr-2 btn">
+                          <i class="fa-solid fa-xmark"></i> Reject
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </li>
+                <% }) %>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
