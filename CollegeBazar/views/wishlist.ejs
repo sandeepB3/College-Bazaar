@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/cart.css">
+
+<div class="row mt-2">
+    <h1 class="title">
+        Your Wishlist
+    </h1>
+</div>
+<div class="row mt-2 justify-content-between">
+    <div class="top">
+        <div class="col-md-4">
+            <form action="/">
+                <button class="topButton-left" type="submit">
+                    Continue Shopping
+                    </button>
+            </form>
+            
+        </div>
+     
+       
+        
+       
+    </div>
+
+</div>
+
+        
+            
+           <div class="row mt-2 mb-2">
+            
+                <div class="col-md-8">
+                    <div class="container-fluid">
+                    <% for( let item of user.wishlist ) { %>
+    <%if(item.author.status==="Accepted"){%>
+                    
+                        <div class="row mt-2 d-flex ">
+                            <div class="card shadow" style="display: flex; flex-direction:row">
+                                <div class="col-md-2">
+                                    <% if(item.images.length){ %> 
+                                        <img class="img-fluid" alt="" src="<%= item.images[0].url %>" style="border-radius:25%">
+                                    <% } %> 
+                                   </div>
+                                   <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= item.title %> 
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= item.price %> 
+                                        </p>
+                                        <p class="card-text">
+                                           <small class="text-muted">Posted by <%= item.author.username %></small>  
+                                        </p>
+                                        <div style="display: inline-flex;">
+                                            <form action="/addToCart/<%=item._id%>" method="post">
+                                                <div class="icon" >
+                                                  <button class="btn"><i class="fa-solid fa-cart-shopping"></i></button>
+                                                </div>
+                                            </form>
+                                            <form action="/deleteWishlist/<%=item._id%>?_method=DELETE" method="post">
+                                                <div class="icon" >
+                                                  <button class="btn"><i class="fa-solid fa-trash-can"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                   </div>
+                            </div>
+                            
+                        </div>
+                        
+                    
+                       <%}%>
+                    <% } %>
+                </div>
+                
+
+               
+           
+            
+           </div>
+      
+      
+        <!-- <div class="container-fluid"> -->
+        
