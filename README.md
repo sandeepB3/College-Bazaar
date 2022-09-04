@@ -23,7 +23,7 @@ The Admin folder includes all the frontend and backened files which on running, 
 
 ***
 ## Deployed Links
-Please Note: This is a prototype, users cannot actually buy these products as payment gateways and tracking systems are not yet implemented. The website itself needs a lot of work, and better optimisation for mobile devices.
+Please Note: This is a prototype, users cannot actually buy these products as payment gateways and tracking systems are not yet implemented. The website itself needs a lot of work, and yet to make better optimisation for mobile devices.
 
 For users to buy and sell: https://collegebazaar.herokuapp.com/ <br>
 For admins to monitor users: https://admin-collegebazaar.herokuapp.com/
