@@ -9,7 +9,7 @@ This repository has two folders:
 2. Admin
 
 ***
-The CollegeBazar folder includes all the frontend and backened files which on running, is the interface for users to buy and sell utility, stationary, and electronic products. The main features of this site includes: <br>
+The CollegeBazar folder includes all the frontend and backend files which on running, is the interface for users to buy and sell utility, stationary, and electronic products. The main features of this site includes: <br>
 1) A filter for filtering various categories
 2) A search bar which allows user to search for a required product
 3) A wishlist and an add to cart button for users to like and buy products 
@@ -17,7 +17,7 @@ The CollegeBazar folder includes all the frontend and backened files which on ru
 other things can be discussed.
 
 ***
-The Admin folder includes all the frontend and backened files which on running, is the interface for Admins to monitor the kind of products that someone is selling. The main features of this site includes: <br>
+The Admin folder includes all the frontend and backend files which on running, is the interface for Admins to monitor the kind of products that someone is selling. The main features of this site includes: <br>
 1) An option to Accept or Reject a particular items listing as there might be a case of fake items being sold.
 2) An option of Blacklist to block a particular user from posting any items
 
