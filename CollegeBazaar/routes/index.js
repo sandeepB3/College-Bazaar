@@ -67,7 +67,6 @@ router.post('/tags', wrapAsync(async (req, res) => {
     // console.log(req.body)
     const items = await Item.find({ "title": searchName}).populate('author')
     res.render('marketplace', {items})
-
 }))
 
 
@@ -81,12 +80,6 @@ router.post('/joiningpage/:seller', isLoggedIn, (req, res) => {
     const user = req.user
     res.render('joiningPage',{user, sellerName});
 })
-
-// router.post('/mychat/:me', isLoggedIn, (req, res) => {
-//     const me = req.params.me
-//     const user = req.user
-//     res.render('joiningPage',{user, me});
-// })
 
 
 // CART AND WISHLIST
@@ -117,15 +110,15 @@ router.post('/addToCart/:id', isLoggedIn,wrapAsync( async (req, res) => {
     user.cart.push(item._id)
     await user.save()
     res.redirect("/cart")
-   
-
 }))
+
 
 router.delete("/deleteCart/:id", isLoggedIn, wrapAsync(async (req, res) => {
     const _id = req.params.id
     await User.findByIdAndUpdate(req.user._id, { $pull: { cart: _id } })
     res.redirect("/cart")
 }))
+
 
 router.delete("/deleteWishlist/:id", isLoggedIn, wrapAsync(async (req, res) => {
     const _id = req.params.id
@@ -144,6 +137,7 @@ router.get('/wishlist', isLoggedIn,wrapAsync( async (req, res) => {
     // console.log(user)
     res.render("wishlist", { user })
 }))
+
 router.post('/addToWishlist/:id', isLoggedIn, wrapAsync(async (req, res) => {
     const { id } = req.params
     const item = await Item.findById(id)
@@ -155,7 +149,6 @@ router.post('/addToWishlist/:id', isLoggedIn, wrapAsync(async (req, res) => {
                 return res.redirect('/wishlist')
             }
         }
-
     }
     user.wishlist.push(item._id)
     await user.save()
@@ -255,6 +248,7 @@ router.put('/edit/:item', isLoggedIn, (req, res) => {
         })
 
 })
+
 router.get("/logout", isLoggedIn, function (req, res) {
     req.logout(function (err) {
         // if (err) { console.log(err); }
