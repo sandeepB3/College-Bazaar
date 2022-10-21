@@ -70,11 +70,6 @@ router.post('/tags', wrapAsync(async (req, res) => {
 
 }))
 
-//////////
-
-
-
-
 
 //CHAT ROUTES
 router.get('/chat', isLoggedIn, (req, res) => {
